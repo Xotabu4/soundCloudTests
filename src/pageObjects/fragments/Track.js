@@ -17,7 +17,7 @@ class Track {
      * @returns {Promise} Promise object that will be resolved to text of this track
      */
     getTrackInfo() {
-        return this.trackElement.getText();
+        return this.trackElement.getText().then(text=> text.toLowerCase());
     }
 
     /**
