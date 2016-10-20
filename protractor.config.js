@@ -32,6 +32,8 @@ exports.config = {
   */
   onPrepare: function () {
 
+    global.SMALL_TIMEOUT = 2000;
+    
     //Setting global beforeEach for all tests.
     beforeEach(function () {
         browser.get('/');

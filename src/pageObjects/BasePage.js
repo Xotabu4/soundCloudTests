@@ -1,7 +1,7 @@
 "use strict";
 var Player = require('./fragments/Player');
 var Track = require('./fragments/Track');
-
+let EC = protractor.ExpectedConditions;
 
 class BasePage {
     constructor() {
@@ -26,14 +26,23 @@ class BasePage {
      */
     search(searchRequest) {
         this.searchButton.click();
-        browser.sleep(2000);
-        let searchInput = $('input.search-form__input')
+        let searchInput = $('input.search-form__input');
+
+        browser.wait(EC.visibilityOf(searchInput), 2000, 'Search input should became visible');
+        
         searchInput.sendKeys(searchRequest).submit();
-        browser.sleep(5000); //Search might take some time
+        //browser.sleep(5000); //Search might take some time
+
+        browser.wait(EC.visibilityOf(this.tracks(0).playButton), 10000).then(function () {
+            //will be executed when search success
+        }, function () {
+            //will be executed when search unsuccess
+        })
+        
     }
 
     getHeaderTitle() {
-        $('content-header h1').getText()
+        return $('content-header h1').getText()
     }
 }
 

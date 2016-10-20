@@ -10,8 +10,8 @@ describe(`Searching: `, function (){
     let homePage = new HomePage();
     let searchPage = new SearchPage();
 
-    xit('simple search should be successful', function () {
-        let searchRequest = 'Test';
+    it('simple search should be successful', function () {
+        let searchRequest = 'test';
         homePage.search(searchRequest);
 
         expect(searchPage.tracks(0).getTrackInfo())
@@ -29,7 +29,7 @@ describe(`Searching: `, function (){
         browser.get('http://as234234ldkfj.com').then(undefined,log); 
     });
 
-    it('How to wait for multiple promises to resolve', function () {
+    xit('How to wait for multiple promises to resolve', function () {
         let firstTrack = homePage.tracks(0).getTrackInfo()
         let secondTrack = homePage.tracks(1).getTrackInfo()
         
@@ -47,5 +47,28 @@ describe(`Searching: `, function (){
         })
 
     }); 
+
+    xit('Own promise', function () {
+        let deferred = protractor.promise.defer();
+        setTimeout(()=> {
+            deferred.fulfill(true);
+            console.log('finished')
+        }, 2000);
+        
+        browser.wait(deferred.promise, 15000, 'Wating for promise to resolve');
+
+        //deferred.reject('');
+
+        //deferred.promise.then(function (text) {console.log(text)});
+
+    });
+
+    xit('Wait with predefined conditions', function () {
+
+        let EC = protractor.ExpectedConditions;
+
+        browser.wait(EC.visibilityOf($$('asdf') ) )
+        //browser.wait(protractor.ExpectedConditions.visibilityOf(), 10000);    
+    })
     
 });
