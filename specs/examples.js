@@ -78,3 +78,34 @@ xdescribe(`Examples:`, function (){
     })
 
 });
+
+
+
+describe('mock modules', function () {
+    beforeAll(function () {
+        browser.addMockModule('myApp.appVersion', function() {
+            angular.module('myApp.appVersion', []).
+            value('version', '10.0').
+            directive('appVersion', ['version', function(version) {
+                return function(scope, elm, attrs) {
+                elm.text(version);
+                };
+            }]);
+        });
+    })
+
+    afterAll(function () {
+        browser.clearMockModules();
+    })
+
+
+    it('mocking modules', function () {
+
+
+        browser.get('http://www.protractortest.org/testapp/ng1/#/repeater')        
+        browser.$('[app-version]').getText().then(console.log);
+
+        browser.sleep(10000);
+    })
+})
+

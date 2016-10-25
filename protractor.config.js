@@ -25,6 +25,9 @@ exports.config = {
 
   //This tells protractor that we have Angular 2 app on the page, so synchronizing with it should be done differently than with Angular 1
   useAllAngular2AppRoots: true,
+  
+  // Option to sychronize with angular 1 applications, put css selector that will find element with ng-app attribute.
+  //rootElement: 'html',
 
   /**
     Some of protractor life-circle methods. Provided function will be called when browser is started, and your test runner (jasmine2) is initialized.
@@ -34,6 +37,9 @@ exports.config = {
 
     global.SMALL_TIMEOUT = 2000;
     
+    // implicitlyWait - hidden wait for element existence
+    browser.manage().timeouts().implicitlyWait(3000);
+
     //Setting global beforeEach for all tests.
     beforeEach(function () {
         browser.get('/');
