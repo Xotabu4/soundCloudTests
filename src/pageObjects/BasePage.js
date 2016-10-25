@@ -31,14 +31,8 @@ class BasePage {
         browser.wait(EC.visibilityOf(searchInput), 2000, 'Search input should became visible');
         
         searchInput.sendKeys(searchRequest).submit();
-        //browser.sleep(5000); //Search might take some time
 
-        browser.wait(EC.visibilityOf(this.tracks(0).playButton), 10000).then(function () {
-            //will be executed when search success
-        }, function () {
-            //will be executed when search unsuccess
-        })
-        
+        browser.wait(EC.visibilityOf(this.tracks(0).playButton), 10000);
     }
 
     getHeaderTitle() {
