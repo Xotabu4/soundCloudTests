@@ -81,7 +81,7 @@ xdescribe(`Examples:`, function (){
 
 
 
-describe('mock modules', function () {
+xdescribe('mock modules', function () {
     beforeAll(function () {
         browser.addMockModule('myApp.appVersion', function() {
             angular.module('myApp.appVersion', []).
@@ -109,3 +109,13 @@ describe('mock modules', function () {
     })
 })
 
+
+describe('plugin console errors example', function () {
+
+    it('should fail when errors in console', function () {
+
+        browser.get('https://room.presencetest.com/wpdima')
+        browser.sleep(5000);
+        
+    })
+})

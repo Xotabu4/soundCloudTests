@@ -4,10 +4,17 @@
   "scripts": {
     "postinstall": "node node_modules/protractor/bin/webdriver-manager update",
     "pretest": "",
-    "test": "node node_modules/protractor/built/cli.js protractor.config.js"
+    "test": "node node_modules/protractor/built/cli.js protractor.config.js",
+    "gulptest": "gulp test",
+    "grunttest": "grunt test"
   },
   "dependencies": {
     "protractor": "^4.0.9",
-    "jasmine2-reporter": "^0.2.0"
+    "jasmine2-reporter": "^0.2.0",
+    "protractor-console-plugin": "^0.1.1",
+    "grunt-protractor-runner": "^4.0.0",
+    "gulp-protractor": "3.0.0",
+    "gulp":"^3.9.1",
+    "grunt": "1.0.1"
   }
 }

@@ -7,7 +7,7 @@ exports.config = {
   baseUrl: 'https://soundcloud-ngrx.herokuapp.com',
 
   //What specs files to load? Here you can pass array of strings with wildcards
-  specs: ['./specs/*_spec.js'],
+  specs: ['./specs/examples.js'],
 
   //Allows us to not start selenium server for tests. Useful for development.
   directConnect: true,
@@ -69,7 +69,15 @@ exports.config = {
     };
     //Adding reporter to jasmine.
     jasmine.getEnv().addReporter(new JasmineReporter(options));
-  }
+  },
 
-  
+
+  plugins: [{
+    package: 'protractor-console-plugin',
+    failOnWarning: true,
+    failOnError: false,
+    logWarnings: true
+    //exclude: {Array of strings and regex}   (Default - [])
+  }] 
+
 };
